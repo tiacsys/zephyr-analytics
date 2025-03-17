@@ -9,13 +9,14 @@ GIT_DIR=$1
 REPO_NAME=`basename $GIT_DIR`
 DB_FILE="${REPO_NAME}.sqlite"
 
-pushd $GIT_DIR
-TAGS=$(git tag -l --sort=-creatordate --format='%(refname:short)' |grep "^v" |grep  -v "\(rc\|99\)" |sort)
-
 if test -f "$DB_FILE"; then
     echo "$DB_FILE exists, keep copy of existing file as .bak"
     mv $DB_FILE "${DB_FILE}.bak"
 fi
+
+pushd $GIT_DIR
+TAGS=$(git tag -l --sort=-creatordate --format='%(refname:short)' |grep "^v" |grep  -v "\(rc\|99\)" |sort)
+
 
 only_first_item=''
 for t in $TAGS
