@@ -1,8 +1,0 @@
-matplotlib
-pandas
-numpy
-jupyterlab
-pysqlite3
-nbstripout
-pre-commit
-numerize
